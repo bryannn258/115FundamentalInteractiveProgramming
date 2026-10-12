@@ -1,0 +1,31 @@
+const int rLEDPin = 9;
+const int gLEDPin = 10;
+const int bLEDPin = 11;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(rLEDPin, OUTPUT);
+  pinMode(gLEDPin, OUTPUT);
+  pinMode(bLEDPin, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  //Green
+  digitalWrite(rLEDPin, HIGH);
+  digitalWrite(gLEDPin, LOW);
+  digitalWrite(bLEDPin, HIGH);
+  delay(5000);
+
+  //Yellow
+  digitalWrite(rLEDPin, LOW);
+  digitalWrite(gLEDPin, LOW);
+  digitalWrite(bLEDPin, HIGH);
+  delay(1000);
+
+  //Red
+  digitalWrite(rLEDPin, LOW);
+  digitalWrite(gLEDPin, HIGH);
+  digitalWrite(bLEDPin, HIGH);
+  delay(8000);
+}
