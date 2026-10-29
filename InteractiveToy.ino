@@ -53,7 +53,6 @@ void setup() {
   lcd.backlight();
   lcd.clear();
 
-
   unsigned long now = millis();
   lastPetTime = now;
   lastMoodChangeTime = now;
@@ -86,8 +85,6 @@ void checkButton(unsigned long now) {
   if (now - lastDebounceTime > debounceTime) {
     if (reading != stableButtonState) {
       stableButtonState = reading;
-
-
       if (stableButtonState == HIGH) {
         petToy(now);
       }
@@ -101,7 +98,6 @@ void petToy(unsigned long now) {
     displayNeedsUpdate = true;
     updateLedColor();
   }
-
   lastPetTime = now;
   lastMoodChangeTime = now;
 }
@@ -116,11 +112,9 @@ void checkLightSensor(unsigned long now) {
     isDark = (lightValue <= darkThreshold);
     isVeryDark = (lightValue <= veryDarkThreshold);
   }
-
   if (isDark && !wasDark) {
     darkSince = now;
   }
-
   if (!isDark) {
     darkSince = 0;
   }
@@ -139,7 +133,6 @@ void updateMoodOverTime(unsigned long now) {
   if (isDark) {
     darkDuration = now - darkSince;
   }
-
   if (isDark && darkDuration >= darkHoldTime) {
     if (isVeryDark) {
       if (now - lastMoodChangeTime >= veryDarkDecayTime) {
@@ -170,7 +163,6 @@ void changeMoodBy(int amount) {
   if (newMood > maxMood) {
     newMood = maxMood;
   }
-
   if (newMood != mood) {
     mood = newMood;
     displayNeedsUpdate = true;
@@ -192,7 +184,6 @@ void updateLedColor() {
     greenValue = 255;
     blueValue = 0;
   }
-
   analogWrite(RledPin, 255 - redValue);
   analogWrite(GledPin, 255 - greenValue);
   analogWrite(BledPin, 255 - blueValue);
